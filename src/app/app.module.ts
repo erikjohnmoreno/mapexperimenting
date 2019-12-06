@@ -6,11 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpService, LocalStorage } from './services/utils';
+import { MapboxService } from './services/api';
 
 const APPLICATION_MODULES = [
   BrowserModule,
   AppRoutingModule,
   HttpClientModule
+]
+
+const APPLICATION_SERVICES = [
+  MapboxService
 ]
 
 const UTILITY_SERVICES = [
@@ -26,7 +31,8 @@ const UTILITY_SERVICES = [
     ...APPLICATION_MODULES
   ],
   providers: [
-    ...UTILITY_SERVICES
+    ...UTILITY_SERVICES,
+    ...APPLICATION_SERVICES
   ],
   bootstrap: [AppComponent]
 })
