@@ -1,0 +1,4 @@
+form('[formGroup]'="form" '(ngSubmit)'="onSubmit(form.value)")
+  input(type="text" formControlName="email")
+  input(type="password" formControlName="password")
+  button(type="submit") Submit

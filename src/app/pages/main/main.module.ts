@@ -4,9 +4,16 @@ import { CommonModule } from '@angular/common';
 import { routing } from './main.routes';
 
 import { MainComponent } from './main.component';
+import { HeaderComponent, FooterComponent } from './partials';
+import { MapComponent } from './map/map.component';
 
 const COMPONENTS = [
-  MainComponent
+  MainComponent,
+  MapComponent
+]
+
+const PARTIAL_COMPONENTS = [
+  HeaderComponent, FooterComponent
 ]
 
 @NgModule({
@@ -15,7 +22,8 @@ const COMPONENTS = [
     routing
   ],
   declarations: [
-    ...COMPONENTS
+    ...COMPONENTS,
+    ...PARTIAL_COMPONENTS
   ]
 })
 

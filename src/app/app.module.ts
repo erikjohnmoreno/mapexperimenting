@@ -1,26 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpService, LocalStorage } from './services/utils';
-import { MapboxService } from './services/api';
+import { MapboxService, UserService, SessionService } from './services/api';
+
+import { NgHttpLoaderModule } from 'ng-http-loader';
+import { AuthGuardService, NonAuthGuardService } from './services/route-guards';
 
 const APPLICATION_MODULES = [
-  BrowserModule,
-  AppRoutingModule,
-  HttpClientModule
+  BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule
 ]
 
 const APPLICATION_SERVICES = [
-  MapboxService
+  MapboxService, UserService, SessionService
 ]
 
 const UTILITY_SERVICES = [
-  HttpService,
-  LocalStorage
+  HttpService, LocalStorage
+]
+
+const ROUTE_GUARD_SERVICES = [
+  AuthGuardService,
+  NonAuthGuardService
 ]
 
 @NgModule({
@@ -28,11 +34,13 @@ const UTILITY_SERVICES = [
     AppComponent
   ],
   imports: [
-    ...APPLICATION_MODULES
+    ...APPLICATION_MODULES,
+    NgHttpLoaderModule.forRoot()
   ],
   providers: [
     ...UTILITY_SERVICES,
-    ...APPLICATION_SERVICES
+    ...APPLICATION_SERVICES,
+    ...ROUTE_GUARD_SERVICES
   ],
   bootstrap: [AppComponent]
 })
