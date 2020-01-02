@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService, LocalStorage } from '../utils';
-import { environment } from '../../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 const ENDPOINT = `${environment.api_url}`;
 
@@ -19,6 +19,10 @@ export class SessionService {
       }
     }
     return this.http.post(`${ENDPOINT}/signin`, payload);
+  }
+
+  signOut() {
+    this.localStorage.clear();
   }
 
   getCurrentUser() {

@@ -37,7 +37,8 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           this.localStorage.setObject('currentUser', res['data']);
-          this.router.navigate(['/main/map'])
+          this.localStorage.set('accessToken', res['data']['auth_token']);
+          this.router.navigate(['/main'])
         }
       )
     }

@@ -1,4 +1,13 @@
-form('[formGroup]'="form" '(ngSubmit)'="onSubmit(form.value)")
-  input(type="text" formControlName="email")
-  input(type="password" formControlName="password")
-  button(type="submit") Submit
+.card
+  .card-header
+    .text-center Login
+  .card-body
+    form('[formGroup]'="form" '(ngSubmit)'="onSubmit(form.value)")
+      .form-group
+        label(for="email") Email Address
+        input.form-control(id="email" type="email" formControlName="email")
+      .form-group
+        label(for="password") Password
+        input.form-control(id="password" type="password" formControlName="password")
+
+      button.btn.btn-success.btn-md(type="submit") Submit

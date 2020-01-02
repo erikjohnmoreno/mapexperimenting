@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpService, LocalStorage } from './services/utils';
-import { MapboxService, UserService, SessionService } from './services/api';
+import { MapboxService, UserService, SessionService, CourseService } from './services/api';
 
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { AuthGuardService, NonAuthGuardService } from './services/route-guards';
@@ -17,7 +17,7 @@ const APPLICATION_MODULES = [
 ]
 
 const APPLICATION_SERVICES = [
-  MapboxService, UserService, SessionService
+  MapboxService, UserService, SessionService, CourseService
 ]
 
 const UTILITY_SERVICES = [

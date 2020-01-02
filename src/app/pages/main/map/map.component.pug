@@ -1,2 +1,10 @@
 h1 map
+
+main-map-course('(select_course)'="loadCourse($event)")
+
+ng-container(*ngIf="showOptions")
+  button.btn.btn-info.btn-sm(type="button" '(click)'="saveCourse()" '[disabled]'="!enableOptions") Save course
+button.btn.btn-info.btn-sm(type="button" '(click)'="startTracking()" '[disabled]'="!destination_marker") Start Tracking
+button.btn.btn-info.btn-sm(type="button" '(click)'="initializeCurrentLocation()") Reset
+
 .map.match-parent(id="map")

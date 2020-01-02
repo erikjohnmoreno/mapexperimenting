@@ -6,10 +6,14 @@ import { routing } from './main.routes';
 import { MainComponent } from './main.component';
 import { HeaderComponent, FooterComponent } from './partials';
 import { MapComponent } from './map/map.component';
+import { HomeComponent } from './home/home.component';
+import { CourseComponent } from './map/course/course.component';
 
 const COMPONENTS = [
   MainComponent,
-  MapComponent
+  MapComponent,
+  HomeComponent,
+  CourseComponent
 ]
 
 const PARTIAL_COMPONENTS = [

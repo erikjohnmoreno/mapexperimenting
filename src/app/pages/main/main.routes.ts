@@ -4,6 +4,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { MainComponent } from './main.component';
 import { AuthGuardService } from 'src/app/services/route-guards';
 import { MapComponent } from './map/map.component';
+import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
   {
@@ -13,6 +14,10 @@ export const routes: Routes = [
     children: [
       {
         path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'map',
         component: MapComponent
       }
     ] 
