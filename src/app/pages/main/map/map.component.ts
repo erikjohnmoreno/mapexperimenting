@@ -1,6 +1,9 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+
 import { environment } from 'src/environments/environment';
 import { CourseService } from 'src/app/services/api/course.service';
+import { CourseComponent } from './course/course.component';
 
 import * as mapboxgl from 'mapbox-gl';
 import * as MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
@@ -12,6 +15,10 @@ import * as MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-d
 })
 
 export class MapComponent implements OnInit, AfterViewInit {
+  @ViewChild(CourseComponent, {static: false})
+  private courseComponent: CourseComponent;
+  form: FormGroup;
+
   map: mapboxgl.Map;
   style = 'mapbox://styles/mapbox/streets-v11';
   origin_lat: any;
@@ -28,8 +35,13 @@ export class MapComponent implements OnInit, AfterViewInit {
   enableOptions: boolean = false;
 
   constructor(
-    private courseService: CourseService
-  ) {}
+    private courseService: CourseService,
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      name: ['', Validators.required]
+    })
+  }
 
   ngOnInit() {
     this.initializeCurrentLocation();
@@ -115,12 +127,14 @@ export class MapComponent implements OnInit, AfterViewInit {
       start_lat: this.origin_lat,
       start_lng: this.origin_lng,
       end_lat: this.destination_lat,
-      end_lng: this.destination_lng
+      end_lng: this.destination_lng,
+      name: this.form.get('name').value
     }
     this.courseService.create(payload)
       .subscribe(
         res => {
           alert(res);
+          this.courseComponent.loadCourses();
         }
       )
   }

@@ -16,6 +16,10 @@ export class CourseComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loadCourses();
+  }
+
+  loadCourses() {
     this.courseService.query({})
       .subscribe(
         res => {
