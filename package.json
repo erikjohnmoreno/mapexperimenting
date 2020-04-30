@@ -23,7 +23,7 @@
     "@types/mapbox-gl": "^1.5.2",
     "bootstrap": "^4.4.1",
     "core-js": "^2.5.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mapbox-gl": "^1.6.0",
     "ng-cli-pug-loader": "^0.2.2",
     "rxjs": "^6.5.3",
